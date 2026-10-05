@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Notifications | University Parent Portal</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/style.css' %}">
+
+</head>
+
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-header">
+
+            <h2>University Portal</h2>
+
+            <p>Parent / Guardian</p>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a href=" /parent-dashboard/">
+                Dashboard
+            </a>
+
+            <a href=" /my-wards/">
+                My Wards
+            </a>
+
+            <a href=" /results/">
+                Academic Results
+            </a>
+
+            <a href=" /notifications/"
+               class="active">
+                Notifications
+            </a>
+
+            <a href=" /account-settings/">
+                Account Settings
+            </a>
+
+        </nav>
+
+
+        <button
+            class="logout-button"
+            onclick="logout()">
+
+            Logout
+
+        </button>
+
+    </aside>
+
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <header class="page-header">
+
+            <div>
+
+                <p class="page-label">
+                    Parent Portal
+                </p>
+
+                <h1>
+                    Notifications
+                </h1>
+
+                <p>
+                    Stay updated with important
+                    information about your linked students.
+                </p>
+
+            </div>
+
+
+            <button
+                class="secondary-button"
+                onclick="markAllAsRead()">
+
+                Mark all as read
+
+            </button>
+
+        </header>
+
+
+
+        <!-- NOTIFICATION SUMMARY -->
+
+        <section class="notification-summary">
+
+            <div>
+
+                <span>
+                    Unread notifications
+                </span>
+
+                <strong id="unreadCount">
+                    0
+                </strong>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- NOTIFICATIONS -->
+
+        <section class="notifications-section">
+
+            <div
+                id="notificationsContainer"
+                class="notifications-list">
+
+                <!-- Notifications loaded by JavaScript -->
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <script src="{% static 'js/auth.js' %}"></script>
+
+    <script src="{% static 'js/notifications.js' %}"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Parent Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/style.css' %}"
+    >
+
+</head>
+
+<body data-page="dashboard">
+
+
+<div class="dashboard">
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+
+        <div class="sidebar-brand">
+
+            <div class="university-logo">
+                U
+            </div>
+
+            <div>
+
+                <strong>
+                    University Portal
+                </strong>
+
+                <span>
+                    Parent / Guardian
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav>
+
+
+            <a
+                href=" /parent-dashboard/"
+                class="sidebar-link active"
+            >
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+
+            <a
+                href=" /results/"
+                class="sidebar-link"
+            >
+                <span>▤</span>
+                Academic Results
+            </a>
+
+
+            <a
+                href=" /my-wards/"
+                class="sidebar-link"
+            >
+                <span>♙</span>
+                My Wards
+            </a>
+
+
+            <a
+                href=" /notifications/"
+                class="sidebar-link"
+            >
+                <span>🔔</span>
+                Notifications
+            </a>
+
+
+            <a
+                href=" /account-settings/"
+                class="sidebar-link"
+            >
+                <span>⚙</span>
+                Account Settings
+            </a>
+
+
+        </nav>
+
+
+        <button
+            onclick="logout()"
+            class="logout-button"
+        >
+            ↪ Sign Out
+        </button>
+
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="dashboard-content">
+
+
+        <header class="page-header">
+
+    <div>
+
+        <p class="page-label">
+            Parent Portal
+        </p>
+
+       <h1>Welcome back, <span id="parentName">Parent</span></h1>
+       
+
+        <p>
+            Here's an overview of your linked students
+            and their academic information.
+        </p>
+
+    </div>
+
+</header>
+
+
+<!-- OVERVIEW CARDS -->
+
+<section class="dashboard-stats">
+
+    <div class="stat-card">
+
+        <div class="stat-icon">
+            👨‍🎓
+        </div>
+
+        <div>
+
+            <span>
+                Linked Wards
+            </span>
+
+            <strong id="dashboardWardCount">
+                0
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-icon">
+            📊
+        </div>
+
+        <div>
+
+            <span>
+                Latest CGPA
+            </span>
+
+            <strong id="dashboardCgpa">
+                --
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-icon">
+            🔔
+        </div>
+
+        <div>
+
+            <span>
+                Unread Notifications
+            </span>
+
+            <strong id="dashboardNotifications">
+                0
+            </strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- QUICK ACTIONS -->
+<section class="dashboard-section quick-actions-section">
+    <div class="section-heading">
+        <div>
+            <h2>Quick Actions</h2>
+            <p>Access important areas of your parent portal.</p>
+        </div>
+    </div>
+
+    <div class="quick-actions">
+
+        <a href=" /my-wards/" class="quick-action-card">
+            <div class="quick-action-icon">👨‍🎓</div>
+            <div>
+                <h3>My Wards</h3>
+                <p>View your linked students</p>
+            </div>
+            <span class="quick-action-arrow">→</span>
+        </a>
+
+        <a href=" /results/" class="quick-action-card">
+            <div class="quick-action-icon">📊</div>
+            <div>
+                <h3>Academic Results</h3>
+                <p>Check academic performance</p>
+            </div>
+            <span class="quick-action-arrow">→</span>
+        </a>
+
+        <a href=" /notifications/" class="quick-action-card">
+            <div class="quick-action-icon">🔔</div>
+            <div>
+                <h3>Notifications</h3>
+                <p>View important updates</p>
+            </div>
+            <span class="quick-action-arrow">→</span>
+        </a>
+
+        <a href=" /account-settings/" class="quick-action-card">
+            <div class="quick-action-icon">⚙️</div>
+            <div>
+                <h3>Account Settings</h3>
+                <p>Manage your account</p>
+            </div>
+            <span class="quick-action-arrow">→</span>
+        </a>
+
+    </div>
+</section>
+
+<!-- MY WARDS -->
+
+<section class="dashboard-section">
+
+    <div class="section-heading">
+
+        <div>
+
+            <h2>
+                My Wards
+            </h2>
+
+            <p>
+                Students currently linked to your account.
+            </p>
+
+        </div>
+
+
+        <a
+            href=" /my-wards/"
+            class="view-all">
+
+            View all
+
+        </a>
+
+    </div>
+
+
+    <div
+        id="dashboardWards"
+        class="dashboard-wards">
+
+        <!-- Loaded by JavaScript -->
+
+    </div>
+
+</section>
+
+<!-- ACADEMIC PERFORMANCE -->
+<section class="dashboard-section">
+    <div class="section-heading">
+        <div>
+            <h2>Academic Performance</h2>
+            <p>Latest academic information for your ward.</p>
+        </div>
+    </div>
+
+    <div class="performance-card">
+
+        <div class="performance-main">
+            <div class="performance-avatar">
+                🎓
+            </div>
+
+            <div>
+                <h3 id="performanceStudentName">
+                    Student Name
+                </h3>
+
+                <p id="performanceStudentInfo">
+                    Student ID · Department
+                </p>
+            </div>
+        </div>
+
+        <div class="performance-details">
+
+            <div class="performance-stat">
+                <span>Current CGPA</span>
+                <strong id="performanceCgpa">--</strong>
+            </div>
+
+            <div class="performance-stat">
+                <span>Academic Standing</span>
+                <strong id="performanceStanding">
+                    Good Standing
+                </strong>
+            </div>
+
+            <div class="performance-stat">
+                <span>Latest Semester</span>
+                <strong id="performanceSemester">
+                    -- 
+                </strong>
+            </div>
+
+        </div>
+
+        <a href=" /results/" class="primary-button">
+            View Full Results
+        </a>
+
+    </div>
+</section>
+
+<!-- RECENT ACTIVITY -->
+
+<section class="dashboard-section">
+
+    <div class="section-heading">
+
+        <div>
+
+            <h2>
+                Recent Activity
+            </h2>
+
+            <p>
+                Recent updates on your account.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="recentActivity"
+        class="activity-list">
+
+        <!-- Loaded by JavaScript -->
+
+    </div>
+
+</section>
+
+    </main>
+
+</div>
+
+
+<script src="{% static 'js/auth.js' %}"></script>
+<script src="{% static 'js/data.js' %}"></script>
+<script src="{% static 'js/notifications.js' %}"></script>
+<script src="{% static 'js/dashboard.js' %}"></script>
+</body>
+</html>

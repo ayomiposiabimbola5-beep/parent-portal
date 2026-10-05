@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Parent / Guardian Login</title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/style.css' %}"
+    >
+
+</head>
+
+<body class="authentication-page" data-page="login">
+
+
+<div class="auth-container">
+
+
+    <div class="auth-brand">
+
+        <div class="university-logo">
+            U
+        </div>
+
+        <h2>
+            Parent / Guardian Portal
+        </h2>
+
+        <p>
+            Secure access to ward academic information
+        </p>
+
+    </div>
+
+
+    <div class="auth-card">
+
+
+        <div class="auth-heading">
+
+            <span class="label">
+                PARENT / GUARDIAN ACCESS
+            </span>
+
+            <h1>
+                Sign in
+            </h1>
+
+            <p>
+                Enter your registered credentials to
+                access your ward's academic records.
+            </p>
+
+        </div>
+
+
+        <form id="parentLoginForm">
+
+
+            <div class="input-group">
+
+                <label for="parentId">
+                    Parent / Guardian ID
+                </label>
+
+                <input
+                    type="text"
+                    id="parentId"
+                    placeholder="Parent/Guardian ID"
+                    required
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+            </div>
+
+
+            <div class="auth-options">
+
+                <label>
+                    <input type="checkbox">
+                    Remember me
+                </label>
+
+                <a href="#">
+                    Forgot password?
+                </a>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="login-button"
+            >
+                Sign In
+            </button>
+
+
+            <p
+                id="loginMessage"
+                class="login-message"
+            ></p>
+
+
+        </form>
+
+
+        <div class="security-message">
+
+            🔒
+            <span>
+                Your access is protected by secure
+                authentication.
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <a
+        href=" /index/"
+        class="back-portal"
+    >
+        ← Return to University Portal
+    </a>
+
+
+</div>
+
+
+<script src="{% static 'js/auth.js' %}"></script>
+
+</body>
+</html>

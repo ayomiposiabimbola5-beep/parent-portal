@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Academic Results | University Portal</title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/style.css' %}"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard">
+
+
+    <!-- =====================================
+         SIDEBAR
+    ====================================== -->
+
+    <aside class="sidebar">
+
+
+        <div class="sidebar-brand">
+
+            <div class="university-logo">
+                U
+            </div>
+
+            <div>
+
+                <strong>
+                    University Portal
+                </strong>
+
+                <span>
+                    Parent / Guardian
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav>
+
+
+            <a
+                href=" /parent-dashboard/"
+                class="sidebar-link"
+            >
+
+                <span>⌂</span>
+
+                Dashboard
+
+            </a>
+
+
+            <a
+                href=" /results/"
+                class="sidebar-link active"
+            >
+
+                <span>▤</span>
+
+                Academic Results
+
+            </a>
+
+
+            <a
+                href=" /my-wards/"
+                class="sidebar-link"
+            >
+
+                <span>♙</span>
+
+                My Wards
+
+            </a>
+
+
+            <a
+                href=" /notifications/"
+                class="sidebar-link"
+            >
+
+                <span>🔔</span>
+
+                Notifications
+
+            </a>
+
+
+            <a
+                href=" /account-settings/"
+                class="sidebar-link"
+            >
+
+                <span>⚙</span>
+
+                Account Settings
+
+            </a>
+
+
+        </nav>
+
+
+        <button
+            onclick="logout()"
+            class="logout-button"
+        >
+
+            ↪ Sign Out
+
+        </button>
+
+
+    </aside>
+
+
+
+    <!-- =====================================
+         MAIN CONTENT
+    ====================================== -->
+
+    <main class="dashboard-content">
+
+
+        <!-- =================================
+             HEADER
+        ================================== -->
+
+        <header class="dashboard-header">
+
+
+            <div>
+
+                <span class="label">
+                    ACADEMIC RECORD
+                </span>
+
+
+                <h1>
+                    Academic Results
+                </h1>
+
+
+                <p>
+                    View your ward's academic performance.
+                </p>
+
+            </div>
+
+
+            <div class="profile-circle">
+                MA
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =================================
+             RESULT SELECTOR
+        ================================== -->
+
+        <section class="result-selector">
+
+
+            <div>
+
+                <span class="label">
+                    RESULT SEARCH
+                </span>
+
+
+                <h2>
+                    Select Academic Period
+                </h2>
+
+
+                <p>
+                    Choose the academic session and semester
+                    you wish to view.
+                </p>
+
+            </div>
+
+
+
+            <div class="selector-grid">
+
+
+                <!-- STUDENT -->
+
+                <div class="input-group">
+
+                    <label for="studentSelect">
+                        Student
+                    </label>
+
+
+                    <select id="studentSelect">
+
+                        
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- SESSION -->
+
+                <div class="input-group">
+
+                    <label for="sessionSelect">
+                        Academic Session
+                    </label>
+
+
+                    <select id="sessionSelect">
+
+                        <option value="2025/2026">
+                            2025/2026
+                        </option>
+
+
+                        <option value="2024/2025">
+                            2024/2025
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- SEMESTER -->
+
+                <div class="input-group">
+
+                    <label for="semesterSelect">
+                        Semester
+                    </label>
+
+
+                    <select id="semesterSelect">
+
+    <option value="First Semester">
+        First Semester
+    </option>
+
+    <option value="Second Semester">
+        Second Semester
+    </option>
+
+</select>
+
+                </div>
+
+
+
+                <!-- VIEW RESULT -->
+
+                <button
+                    type="button"
+                    onclick="loadResult()"
+                    class="results-button"
+                >
+
+                    View Result
+
+                </button>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================
+             UNIVERSITY RESULT
+        ================================== -->
+
+        <section class="university-result">
+
+
+            <!-- =================================
+                 STUDENT INFORMATION
+            ================================== -->
+
+            <div class="result-student-header">
+
+
+                <div class="ward-profile">
+
+
+                    <div class="large-ward-avatar" data-student-initials>
+                        AA
+                    </div>
+
+
+                    <div>
+
+                        <span class="label">
+                            STUDENT
+                        </span>
+
+
+                        <h2 data-student-name>
+                            Ayomiposi Abimbola
+                        </h2>
+
+
+                        <p data-student-id>
+                            2021/CSC/12345
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ACADEMIC DETAILS -->
+
+                <div class="academic-details">
+
+
+                    <div>
+
+                        <span>
+                            Faculty
+                        </span>
+
+
+                        <strong data-student-faculty>
+                            Computing
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Department
+                        </span>
+
+
+                        <strong data-student-department>
+                            Computer Science
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Level
+                        </span>
+
+
+                        <strong data-student-level>
+                            400
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================
+                 GPA SUMMARY
+            ================================== -->
+
+            <div class="gpa-grid">
+
+
+                <!-- SEMESTER GPA -->
+
+                <div class="gpa-card">
+
+                    <span>
+                        Semester GPA
+                    </span>
+
+
+                    <strong data-gpa>
+                        4.45
+                    </strong>
+
+
+                    <small>
+                        Current semester
+                    </small>
+
+                </div>
+
+
+
+                <!-- CGPA -->
+
+                <div class="gpa-card">
+
+                    <span>
+                        Cumulative GPA
+                    </span>
+
+
+                    <strong data-cgpa>
+                        4.32
+                    </strong>
+
+
+                    <small>
+                        Current CGPA
+                    </small>
+
+                </div>
+
+
+
+                <!-- CREDIT UNITS -->
+
+                <div class="gpa-card">
+
+                    <span>
+                        Credit Units
+                    </span>
+
+
+                    <strong data-units>
+                        18
+                    </strong>
+
+
+                    <small>
+                        Registered units
+                    </small>
+
+                </div>
+
+
+
+                <!-- STANDING -->
+
+                <div class="gpa-card">
+
+                    <span>
+                        Academic Standing
+                    </span>
+
+
+                    <strong
+                        class="standing"
+                        data-standing
+                    >
+                        Excellent
+                    </strong>
+
+
+                    <small>
+                        Current standing
+                    </small>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================
+                 COURSE RESULTS
+            ================================== -->
+
+            <div class="courses-container">
+
+
+                <!-- COURSES HEADER -->
+
+                <div class="courses-header">
+
+
+                    <div>
+
+                        <span class="label">
+                            COURSE PERFORMANCE
+                        </span>
+
+
+                        <h2 data-semester>
+                            First Semester Results
+                        </h2>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        onclick="window.print()"
+                        class="print-button"
+                    >
+
+                        🖨 Print Result
+
+                    </button>
+
+
+                </div>
+
+
+
+                <!-- COURSE TABLE -->
+
+                <div class="table-wrapper">
+
+
+                    <table>
+
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Course Code
+                                </th>
+
+                                <th>
+                                    Course Title
+                                </th>
+
+                                <th>
+                                    Units
+                                </th>
+
+                                <th>
+                                    Grade
+                                </th>
+
+                                <th>
+                                    Grade Point
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+
+                        <tbody id="courseTable">
+
+                            <!--
+                                JavaScript will populate
+                                this table automatically.
+                            -->
+
+                        </tbody>
+
+
+                    </table>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================
+                 ACADEMIC REMARK
+            ================================== -->
+
+            <div class="academic-remark">
+
+
+                <div class="remark-symbol">
+                    💬
+                </div>
+
+
+                <div>
+
+                    <span class="label">
+                        ACADEMIC REMARK
+                    </span>
+
+
+                    <p>
+                        The student has demonstrated excellent
+                        academic performance during the semester.
+                        Continued commitment to academic activities
+                        is encouraged.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================
+                 SECURITY DISCLAIMER
+            ================================== -->
+
+            <div class="result-disclaimer">
+
+                <span>
+                    🔒
+                </span>
+
+
+                <span>
+                    This academic information is confidential
+                    and is accessible only to an authorized
+                    parent or guardian linked to this student.
+                </span>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- =====================================
+     JAVASCRIPT
+====================================== -->
+
+<script src="{% static 'js/auth.js' %}"></script>
+
+<script src="{% static 'js/data.js' %}"></script>
+
+<script src="{% static 'js/app.js' %}"></script>
+
+
+</body>
+
+</html>

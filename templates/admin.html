@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>School Admin - Parent Accounts</title>
+  <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">P</div><div><strong>Parent Portal</strong><span>School Administration</span></div></div>
+    <nav>
+      <a class="active" href="admin.html">Parent Accounts</a>
+      <a href="#create-parent">Create Parent</a>
+    </nav>
+    <button id="logoutBtn" class="logout-btn">Log out</button>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div><p class="eyebrow">ADMINISTRATION</p><h1>Parent Accounts</h1><p class="subtitle">Create and manage accounts used by parents to access their wards' academic records.</p></div>
+      <div class="admin-badge">Administrator</div>
+    </header>
+
+    <section class="stats">
+      <div class="stat-card"><span>Total Parents</span><strong id="totalParents">0</strong></div>
+      <div class="stat-card"><span>Active Accounts</span><strong id="activeParents">0</strong></div>
+      <div class="stat-card"><span>Linked Wards</span><strong id="linkedWards">0</strong></div>
+    </section>
+
+    <section id="create-parent" class="panel">
+      <div class="panel-heading"><div><h2>Create Parent Account</h2><p>Create an individual login account for a parent or guardian.</p></div></div>
+      <div id="message" class="message hidden"></div>
+      <form id="parentForm" class="form-grid">
+        <label>First Name<input id="firstName" required autocomplete="given-name"></label>
+        <label>Last Name<input id="lastName" autocomplete="family-name"></label>
+        <label>Email<input id="email" type="email" required autocomplete="email"></label>
+        <label>Username<input id="username" required autocomplete="username"></label>
+        <label>Password<input id="password" type="password" required minlength="8" autocomplete="new-password"></label>
+        <label>Confirm Password<input id="confirmPassword" type="password" required minlength="8" autocomplete="new-password"></label>
+        <div class="form-actions"><button class="primary" type="submit" id="createBtn">Create Account</button><button class="secondary" type="reset">Clear</button></div>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="panel-heading"><div><h2>Parent Accounts</h2><p>Each parent has a separate account and can access only linked wards.</p></div><button class="secondary" id="refreshBtn">Refresh</button></div>
+      <div class="table-wrap"><table><thead><tr><th>Parent</th><th>Username</th><th>Email</th><th>Linked Wards</th><th>Status</th><th>Action</th></tr></thead><tbody id="parentsBody"><tr><td colspan="6" class="empty">Loading parent accounts...</td></tr></tbody></table></div>
+    </section>
+  </main>
+  <script src="{% static 'js/auth.js' %}"></script>
+  <script src="{% static 'js/admin.js' %}"></script>
+</body>
+</html>

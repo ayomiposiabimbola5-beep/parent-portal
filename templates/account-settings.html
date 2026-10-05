@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Account Settings | University Parent Portal</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/style.css' %}">
+
+</head>
+
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-header">
+
+            <h2>University Portal</h2>
+
+            <p>Parent / Guardian</p>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a href=" /parent-dashboard/">
+                Dashboard
+            </a>
+
+            <a href=" /my-wards/">
+                My Wards
+            </a>
+
+            <a href=" /results/">
+                Academic Results
+            </a>
+
+            <a href=" /notifications/">
+                Notifications
+            </a>
+
+            <a href=" /account-settings/"
+               class="active">
+                Account Settings
+            </a>
+
+        </nav>
+
+
+        <button
+            class="logout-button"
+            onclick="logout()">
+
+            Logout
+
+        </button>
+
+    </aside>
+
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <header class="page-header">
+
+            <div>
+
+                <p class="page-label">
+                    Parent Portal
+                </p>
+
+                <h1>
+                    Account Settings
+                </h1>
+
+                <p>
+                    Manage your parent / guardian
+                    account information and security.
+                </p>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- PROFILE -->
+
+        <section class="settings-section">
+
+            <div class="settings-card">
+
+                <div class="settings-card-header">
+
+                    <div>
+
+                        <h2>
+                            Profile Information
+                        </h2>
+
+                        <p>
+                            Your registered parent / guardian details.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <form id="profileForm">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="fullName">
+                                Full Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="fullName"
+                                value="Mr. Abimbola"
+                                required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="parentId">
+                                Parent / Guardian ID
+                            </label>
+
+                            <input
+                                type="text"
+                                id="parentId"
+                                value="PG2025001"
+                                readonly>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="email">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                value="parent@example.com"
+                                required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="phone">
+                                Phone Number
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                value="+234 800 000 0000"
+                                required>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="primary-button">
+
+                        Save Changes
+
+                    </button>
+
+
+                    <p
+                        id="profileMessage"
+                        class="form-message">
+                    </p>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- PASSWORD -->
+
+        <section class="settings-section">
+
+            <div class="settings-card">
+
+                <div class="settings-card-header">
+
+                    <div>
+
+                        <h2>
+                            Change Password
+                        </h2>
+
+                        <p>
+                            Update your password to keep
+                            your account secure.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <form id="passwordForm">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="currentPassword">
+                                Current Password
+                            </label>
+
+                            <input
+                                type="password"
+                                id="currentPassword"
+                                required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="newPassword">
+                                New Password
+                            </label>
+
+                            <input
+                                type="password"
+                                id="newPassword"
+                                minlength="6"
+                                required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="confirmPassword">
+                                Confirm New Password
+                            </label>
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                minlength="6"
+                                required>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="primary-button">
+
+                        Update Password
+
+                    </button>
+
+
+                    <p
+                        id="passwordMessage"
+                        class="form-message">
+                    </p>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- SECURITY -->
+
+        <section class="settings-section">
+
+            <div class="settings-card security-card">
+
+                <div class="settings-card-header">
+
+                    <div>
+
+                        <h2>
+                            Account Security
+                        </h2>
+
+                        <p>
+                            Important information about your account.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="security-item">
+
+                    <div>
+
+                        <strong>
+                            Account Status
+                        </strong>
+
+                        <p>
+                            Your parent account is active.
+                        </p>
+
+                    </div>
+
+                    <span class="security-status">
+                        Active
+                    </span>
+
+                </div>
+
+
+                <div class="security-item">
+
+                    <div>
+
+                        <strong>
+                            Linked Wards
+                        </strong>
+
+                        <p>
+                            Students currently linked to this account.
+                        </p>
+
+                    </div>
+
+                    <span>
+                        1
+                    </span>
+
+                </div>
+
+
+                <div class="security-item">
+
+                    <div>
+
+                        <strong>
+                            Account ID
+                        </strong>
+
+                        <p>
+                            Use this ID when contacting university support.
+                        </p>
+
+                    </div>
+
+                    <span>
+                        PG2025001
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- <script src="js/auth.js"></script> -->
+
+    <script>
+
+        /* =========================================
+           PROFILE FORM
+        ========================================= */
+
+
+const profileForm =
+    document.getElementById("profileForm");
+
+
+profileForm.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+
+        const message =
+            document.getElementById(
+                "profileMessage"
+            );
+
+
+        const fullName =
+            document.getElementById(
+                "fullName"
+            ).value.trim();
+
+
+        const email =
+            document.getElementById(
+                "email"
+            ).value.trim();
+
+
+        try {
+
+            const response =
+                await fetch(
+                    "/api/profile/",
+                    {
+                        method: "PUT",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        credentials: "include",
+
+                        body: JSON.stringify({
+                            full_name: fullName,
+                            email: email
+                        })
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    data.message ||
+                    "Unable to save profile changes."
+                );
+
+            }
+
+
+            message.textContent =
+                "Profile changes saved successfully.";
+
+            message.style.color =
+                "green";
+
+
+        } catch (error) {
+
+            console.error(
+                "Profile update error:",
+                error
+            );
+
+
+            message.textContent =
+                error.message ||
+                "Unable to save profile changes.";
+
+            message.style.color =
+                "red";
+
+        }
+
+    }
+);
+
+
+
+
+
+  /* =========================================
+      PASSWORD FORM
+      ========================================= */
+
+const passwordForm =
+    document.getElementById("passwordForm");
+
+
+passwordForm.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+
+        const currentPassword =
+            document.getElementById(
+                "currentPassword"
+            ).value;
+
+
+        const newPassword =
+            document.getElementById(
+                "newPassword"
+            ).value;
+
+
+        const confirmPassword =
+            document.getElementById(
+                "confirmPassword"
+            ).value;
+
+
+        const message =
+            document.getElementById(
+                "passwordMessage"
+            );
+
+
+        if (newPassword !== confirmPassword) {
+
+            message.textContent =
+                "New passwords do not match.";
+
+            message.style.color =
+                "red";
+
+            return;
+        }
+
+
+        try {
+
+            const response =
+                await fetch(
+                    "/api/change-password/",
+                    {
+                        method: "POST",
+                        credentials: "include",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            current_password:
+                                currentPassword,
+
+                            new_password:
+                                newPassword
+                        })
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            if (!response.ok) {
+
+                message.textContent =
+                    data.message ||
+                    "Unable to update password.";
+
+                message.style.color =
+                    "red";
+
+                return;
+            }
+
+
+            message.textContent =
+                data.message;
+
+            message.style.color =
+                "green";
+
+
+            passwordForm.reset();
+
+
+        } catch (error) {
+
+            console.error(
+                "Password update error:",
+                error
+            );
+
+
+            message.textContent =
+                "Unable to connect to the server.";
+
+            message.style.color =
+                "red";
+
+        }
+
+    }
+);
+    </script>
+    <script src="{% static 'js/auth.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+
+</body>
+
+</html>
