@@ -1,3 +1,4 @@
+
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
@@ -7,27 +8,72 @@ from .models import Student, Result, Notification
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ("name", "matric_number", "department", "level", "parent")
-    search_fields = ("name", "matric_number", "department")
+    list_display = (
+        "name",
+        "matric_number",
+        "parent",
+        "department",
+        "level",
+        "pin",
+    )
+    search_fields = (
+        "name",
+        "matric_number",
+        "department",
+        "parent__username",
+        "parent__email",
+    )
     list_filter = ("department", "level")
+    list_select_related = ("parent",)
+    ordering = ("name",)
+    list_per_page = 25
 
 
 @admin.register(Result)
 class ResultAdmin(admin.ModelAdmin):
-    list_display = ("student", "course_code", "course_title", "score", "grade", "semester", "session")
-    search_fields = ("student__name", "student__matric_number", "course_code", "course_title")
+    list_display = (
+        "student",
+        "course_code",
+        "course_title",
+        "score",
+        "grade",
+        "semester",
+        "session",
+    )
+    search_fields = (
+        "student__name",
+        "student__matric_number",
+        "student__parent__username",
+        "course_code",
+        "course_title",
+    )
     list_filter = ("grade", "semester", "session")
+    list_select_related = ("student",)
+    ordering = ("student__name", "session", "semester", "course_code")
+    list_per_page = 50
 
 
 @admin.register(Notification)
 class NotificationAdmin(admin.ModelAdmin):
-    list_display = ("title", "parent", "created_at", "is_read")
-    search_fields = ("title", "message", "parent__username", "parent__email")
+    list_display = (
+        "title",
+        "parent",
+        "created_at",
+        "is_read",
+    )
+    search_fields = (
+        "title",
+        "message",
+        "parent__username",
+        "parent__email",
+    )
     list_filter = ("is_read", "created_at")
+    list_select_related = ("parent",)
+    ordering = ("-created_at",)
+    list_per_page = 25
 
 
 # Use Django's built-in User model for parent accounts.
-# The existing Django Admin Users page can create parent accounts directly.
 try:
     admin.site.unregister(User)
 except admin.sites.NotRegistered:
@@ -36,6 +82,21 @@ except admin.sites.NotRegistered:
 
 @admin.register(User)
 class ParentUserAdmin(UserAdmin):
-    list_display = ("username", "first_name", "last_name", "email", "is_active", "is_staff")
-    search_fields = ("username", "first_name", "last_name", "email")
+    list_display = (
+        "username",
+        "first_name",
+        "last_name",
+        "email",
+        "is_active",
+        "is_staff",
+    )
+    search_fields = (
+        "username",
+        "first_name",
+        "last_name",
+        "email",
+    )
     list_filter = ("is_active", "is_staff")
+    ordering = ("username",)
+    list_per_page = 25
+ 
