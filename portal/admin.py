@@ -28,6 +28,16 @@ class StudentAdmin(admin.ModelAdmin):
     ordering = ("name",)
     list_per_page = 25
 
+    fields = (
+        "parent",
+        "name",
+        "matric_number",
+        "department",
+        "level",
+        "pin",
+    )
+    readonly_fields = ("pin",)
+
 
 @admin.register(Result)
 class ResultAdmin(admin.ModelAdmin):
