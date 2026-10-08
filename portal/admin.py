@@ -5,6 +5,13 @@ from django.contrib.auth.models import User
 
 from .models import Student, Result, Notification
 
+class StudentInline(admin.TabularInline):
+    model = Student
+    extra = 0
+    fields = ("name", "matric_number", "department", "level", "pin")
+    readonly_fields = ("pin",)
+    show_change_link = True
+
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
@@ -110,6 +117,8 @@ class ParentUserAdmin(UserAdmin):
         "is_active",
         "is_staff",
     )
+
+    inlines = [StudentInline]
 
     def student_count(self, obj):
         return obj.students.count()
