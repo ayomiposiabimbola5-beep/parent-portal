@@ -72,8 +72,22 @@ class Result(models.Model):
     course_title = models.CharField(max_length=200)
     score = models.DecimalField(max_digits=5, decimal_places=2)
     grade = models.CharField(max_length=5, blank=True)
-    semester = models.CharField(max_length=50)
-    session = models.CharField(max_length=20)
+    semester = models.CharField(
+    max_length=50,
+    choices=[
+        ("First Semester", "First Semester"),
+        ("Second Semester", "Second Semester"),
+    ],
+    )
+
+    session = models.CharField(
+    max_length=20,
+    choices=[
+        ("2025/2026", "2025/2026"),
+        ("2026/2027", "2026/2027"),
+        ("2027/2028", "2027/2028"),
+    ],
+    )
 
     def save(self, *args, **kwargs):
         if self.score >= 70:
