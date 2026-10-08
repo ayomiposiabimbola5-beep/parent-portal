@@ -105,6 +105,14 @@ class Result(models.Model):
 
         super().save(*args, **kwargs)
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["student", "course_code", "semester", "session"],
+                name="unique_student_course_semester_session",
+            )
+        ]
+
     def __str__(self):
         return f"{self.student.name} - {self.course_code}"
 
