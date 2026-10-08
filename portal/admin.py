@@ -12,6 +12,18 @@ class StudentInline(admin.TabularInline):
     readonly_fields = ("pin",)
     show_change_link = True
 
+class ResultInline(admin.TabularInline):
+    model = Result
+    extra = 1
+    fields = (
+        "course_code",
+        "course_title",
+        "score",
+        "grade",
+        "semester",
+        "session",
+    )
+    readonly_fields = ("grade",)
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
@@ -23,6 +35,9 @@ class StudentAdmin(admin.ModelAdmin):
         "level",
         "pin",
     )
+
+    inlines = [ResultInline]
+    
     search_fields = (
         "name",
         "matric_number",
