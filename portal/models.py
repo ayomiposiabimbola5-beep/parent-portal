@@ -68,17 +68,31 @@ class Result(models.Model):
         on_delete=models.CASCADE,
         related_name="results"
     )
-
     course_code = models.CharField(max_length=20)
     course_title = models.CharField(max_length=200)
     score = models.DecimalField(max_digits=5, decimal_places=2)
-    grade = models.CharField(max_length=5)
+    grade = models.CharField(max_length=5, blank=True)
     semester = models.CharField(max_length=50)
     session = models.CharField(max_length=20)
 
+    def save(self, *args, **kwargs):
+        if self.score >= 70:
+            self.grade = "A"
+        elif self.score >= 60:
+            self.grade = "B"
+        elif self.score >= 50:
+            self.grade = "C"
+        elif self.score >= 45:
+            self.grade = "D"
+        elif self.score >= 40:
+            self.grade = "E"
+        else:
+            self.grade = "F"
+
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return f"{self.student.name} - {self.course_code}"
-
 
 class Notification(models.Model):
     parent = models.ForeignKey(
