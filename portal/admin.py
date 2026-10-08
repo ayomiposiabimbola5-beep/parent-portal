@@ -113,6 +113,13 @@ class NotificationAdmin(admin.ModelAdmin):
     ordering = ("-created_at",)
     list_per_page = 25
 
+    fields = (
+        "parent",
+        "title",
+        "message",
+        "is_read",
+    )
+
 
 # Use Django's built-in User model for parent accounts.
 try:
