@@ -62,6 +62,15 @@ class ResultAdmin(admin.ModelAdmin):
     ordering = ("student__name", "session", "semester", "course_code")
     list_per_page = 50
 
+    fields = (
+        "student",
+        "course_code",
+        "course_title",
+        "score",
+        "grade",
+        "semester",
+        "session",
+    )
 
 @admin.register(Notification)
 class NotificationAdmin(admin.ModelAdmin):
