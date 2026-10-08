@@ -106,9 +106,16 @@ class ParentUserAdmin(UserAdmin):
         "first_name",
         "last_name",
         "email",
+        "student_count",
         "is_active",
         "is_staff",
     )
+
+    def student_count(self, obj):
+        return obj.students.count()
+
+    student_count.short_description = "Students"
+
     search_fields = (
         "username",
         "first_name",
