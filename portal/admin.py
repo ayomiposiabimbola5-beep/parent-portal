@@ -1,9 +1,9 @@
-
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
 from .models import Student, Result, Notification
+
 
 class StudentInline(admin.TabularInline):
     model = Student
@@ -11,6 +11,7 @@ class StudentInline(admin.TabularInline):
     fields = ("name", "matric_number", "department", "level", "pin")
     readonly_fields = ("pin",)
     show_change_link = True
+
 
 class ResultInline(admin.TabularInline):
     model = Result
@@ -25,6 +26,7 @@ class ResultInline(admin.TabularInline):
     )
     readonly_fields = ("grade",)
 
+
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
     list_display = (
@@ -35,9 +37,6 @@ class StudentAdmin(admin.ModelAdmin):
         "level",
         "pin",
     )
-
-    inlines = [ResultInline]
-
     search_fields = (
         "name",
         "matric_number",
@@ -59,6 +58,8 @@ class StudentAdmin(admin.ModelAdmin):
         "pin",
     )
     readonly_fields = ("pin",)
+
+    inlines = [ResultInline]
 
 
 @admin.register(Result)
@@ -94,6 +95,7 @@ class ResultAdmin(admin.ModelAdmin):
         "session",
     )
 
+
 @admin.register(Notification)
 class NotificationAdmin(admin.ModelAdmin):
     list_display = (
@@ -120,8 +122,13 @@ class NotificationAdmin(admin.ModelAdmin):
         "is_read",
     )
 
+    actions = ["mark_as_read"]
 
-# Use Django's built-in User model for parent accounts.
+    @admin.action(description="Mark selected notifications as read")
+    def mark_as_read(self, request, queryset):
+        queryset.update(is_read=True)
+
+
 try:
     admin.site.unregister(User)
 except admin.sites.NotRegistered:
@@ -139,14 +146,6 @@ class ParentUserAdmin(UserAdmin):
         "is_active",
         "is_staff",
     )
-
-    inlines = [StudentInline]
-
-    def student_count(self, obj):
-        return obj.students.count()
-
-    student_count.short_description = "Students"
-
     search_fields = (
         "username",
         "first_name",
@@ -156,4 +155,10 @@ class ParentUserAdmin(UserAdmin):
     list_filter = ("is_active", "is_staff")
     ordering = ("username",)
     list_per_page = 25
- 
+
+    inlines = [StudentInline]
+
+    def student_count(self, obj):
+        return obj.students.count()
+
+    student_count.short_description = "Students"
