@@ -68,7 +68,17 @@
 
     </aside>
 
+    <!-- MOBILE MENU BUTTON -->
 
+    <button
+        type="button"
+        class="mobile-menu-button"
+        onclick="toggleMobileMenu()"
+        aria-label="Open menu"
+    >
+        <span class="university-logo">U</span>
+        <span>☰</span>
+    </button>
 
     <!-- MAIN CONTENT -->
 
@@ -148,6 +158,11 @@
 
     <script src="{% static 'js/notifications.js' %}"></script>
 
+    <script>
+        function toggleMobileMenu() {
+        document.querySelector(".sidebar").classList.toggle("open");
+        }
+    </script>
 
 </body>
 

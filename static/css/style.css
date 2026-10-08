@@ -2600,3 +2600,144 @@ td:first-child {
         text-align: left;
     }
 }
+
+/* =========================================
+   PARENT DASHBOARD MOBILE FIX
+========================================= */
+
+@media (max-width: 480px) {
+
+    .dashboard-content {
+        padding: 20px 12px;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .dashboard-statistics,
+    .dashboard-stats {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .stat-card {
+        width: 100%;
+        padding: 17px;
+    }
+
+    .dashboard-section {
+        width: 100%;
+    }
+
+    .dashboard-ward {
+        width: 100%;
+        padding: 16px;
+    }
+
+    .dashboard-ward-info {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .dashboard-ward-details {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .ward-title-row {
+        flex-wrap: wrap;
+    }
+
+    .dashboard-ward-right {
+        width: 100%;
+    }
+
+    .quick-action-card {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .performance-card {
+        padding: 17px;
+    }
+
+    .section-heading {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+}
+
+/* =========================================
+   MOBILE MENU BUTTON
+========================================= */
+
+.mobile-menu-button {
+    display: none;
+}
+
+@media (max-width: 700px) {
+
+    .mobile-menu-button {
+        display: flex;
+        position: fixed;
+        top: 12px;
+        left: 12px;
+        z-index: 100;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border: none;
+        border-radius: 8px;
+        background: var(--primary);
+        color: white;
+        cursor: pointer;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .mobile-menu-button .university-logo {
+        width: 30px;
+        height: 30px;
+        font-size: 15px;
+    }
+
+    .mobile-menu-button span:last-child {
+        font-size: 20px;
+        line-height: 1;
+    }
+
+    .dashboard-content {
+        padding-top: 65px;
+    }
+}
+
+/* =========================================
+   MOBILE FIXES FOR OTHER PORTAL PAGES
+========================================= */
+
+@media (max-width: 700px) {
+
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+        padding: 65px 17px 24px;
+        box-sizing: border-box;
+        min-width: 0;
+    }
+
+    .main-content .page-header {
+        width: 100%;
+        box-sizing: border-box;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .main-content section,
+    .main-content .card,
+    .main-content .content-card {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .main-content table {
+        max-width: 100%;
+    }
+}
