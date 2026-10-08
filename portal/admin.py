@@ -14,7 +14,7 @@ class StudentInline(admin.TabularInline):
 
 class ResultInline(admin.TabularInline):
     model = Result
-    extra = 1
+    extra = 5
     fields = (
         "course_code",
         "course_title",
@@ -37,7 +37,7 @@ class StudentAdmin(admin.ModelAdmin):
     )
 
     inlines = [ResultInline]
-    
+
     search_fields = (
         "name",
         "matric_number",
